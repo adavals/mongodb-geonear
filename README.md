@@ -10,7 +10,7 @@ Go to Add Data --> Import file --> Select File --> Import
 
 ![Step 1](https://github.com/adavals/mongodb-geonear/blob/main/img/Step1.png)
 
-## Step 2. Create an array field with coordinates using Mongo shell and some cleaning
+## Step 2. Create an array field with coordinates and do some cleaning, using Mongo shell
 Open MongoSH (Mongo shell) at the bottom of MongoDB Compass window and introduce the following commands:
 - Select database
 ```javascript
