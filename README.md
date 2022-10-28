@@ -1,6 +1,6 @@
 # mongodb-geonear
 Finding the nearest store based on a stores dataset with longitude and latitude fields using MongoDB Compass 1.33.1 - MongoDB 5.013.
-Steps to follow:
+
 ## Step 1. Import the dataset
 The dataset sample is [Starbucks stores csv sample](https://github.com/beduExpert/A1-Introduccion-a-Bases-de-Datos-Santander2021/blob/experto/Sesion-08/Reto-01/datos/directory.csv)
 
@@ -9,10 +9,13 @@ On MongoDB Compass create a database called: Starbucks and a collection called: 
 Go to Add Data --> Import file --> Select File --> Import
 
 ![Step 1](https://github.com/adavals/mongodb-geonear/blob/main/img/Step1.png)
-## Step 2. Create an array field with coordinates
+
+## Step 2. Create an array field with coordinates using Mongo shell and some cleaning
 Open MongoSH (Mongo shell) at the bottom of MongoDB Compass window and introduce the following commands:
 - Select database
+```javascript
 use Starbucks
+```
 ![Step 2](https://github.com/adavals/mongodb-geonear/blob/main/img/Step2.png)
 
 - Create a new array field on the directory collection using the longitude and latitude fields imported:
@@ -28,16 +31,18 @@ db.directory.updateMany(
 ```javascript
 db.directory.deleteMany( { $or: [{Longitude : null },{ Latitude : null }]})
 ```
+
 ## Step 3. Create a 2dsphere index
 Select directory collection and:
 
 Go to Indexes Tab --> Create Index --> Select field: coordinates1000 --> Select type 2dsphere --> Create Index
+
 ![Step 3](https://github.com/adavals/mongodb-geonear/blob/main/img/Step3.png)
 
 ## Step 4. Pipeline to find the nearest store
 Select directory collection and:
 
-Go to Aggregations -- > add a geoNear stage with a location you have --> add a limit 1 stage to get just the nearest document
+Go to Aggregations tab -- > add a geoNear stage with a location you want --> add a limit 1 stage to get just the nearest document
 
 ```javascript
 [{
@@ -59,10 +64,8 @@ Go to Aggregations -- > add a geoNear stage with a location you have --> add a l
 
 ![Step 4](https://github.com/adavals/mongodb-geonear/blob/main/img/Step4.png)
 
-
 ## Result with my location
 The nearest store :coffee:
 
-The name of the store was not correct, it seems that the data set may have some incorrect information, but according to the coordinates, it was the correct location of the store closest to my location
-
+Although the name of the store was not correct, it was the correct location of the store closest to my location according its coordinates. It seems this dataset may have some incorrect information.
 
