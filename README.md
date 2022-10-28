@@ -67,5 +67,5 @@ Go to Aggregations tab -- > add a geoNear stage with a location you want --> add
 ## Result with my location
 The nearest store :coffee:
 
-Although the store name was not correct, it was the correct location of the closest store to my location based on their coordinates. It appears that this dataset may have incorrect information.
+Although the store name was not correct, it was the correct location of the closest store to my location based on its coordinates. It appears that this dataset may have incorrect information.
 
